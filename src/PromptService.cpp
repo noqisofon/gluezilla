@@ -26,7 +26,7 @@ PromptService::Alert(nsIDOMWindow *parent, const PRUnichar *title, const PRUnich
 
 /* boolean alertCheck (in nsIDOMWindow parent, in wstring title, in wstring text, in wstring chkMsg, inout boolean chkState); */
 NS_IMETHODIMP 
-PromptService::AlertCheck(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, const PRUnichar *chkMsg, PRBool *chkState)
+PromptService::AlertCheck(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, const PRUnichar *chkMsg, bool/* PRBool */ *chkState)
 {
 	*chkState = browserWindow->owner->events->OnAlertCheck (title, text, chkMsg, chkState);
 	return NS_OK;
@@ -34,7 +34,7 @@ PromptService::AlertCheck(nsIDOMWindow *parent, const PRUnichar *title, const PR
 
 /* boolean confirm (in nsIDOMWindow parent, in wstring title, in wstring text); */
 NS_IMETHODIMP 
-PromptService::Confirm(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, PRBool *retval)
+PromptService::Confirm(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, bool/* PRBool */ *retval)
 {
 	*retval = browserWindow->owner->events->OnConfirm (title, text);
 	return NS_OK;
@@ -43,7 +43,7 @@ PromptService::Confirm(nsIDOMWindow *parent, const PRUnichar *title, const PRUni
 /* boolean confirmCheck (in nsIDOMWindow parent, in wstring title, in wstring text, in wstring chkMsg, inout boolean chkState); */
 NS_IMETHODIMP 
 PromptService::ConfirmCheck(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, 
-							const PRUnichar *chkMsg, PRBool *chkState, PRBool *retval)
+							const PRUnichar *chkMsg, bool/* PRBool */ *chkState, bool/* PRBool */ *retval)
 {
 	*retval = browserWindow->owner->events->OnConfirmCheck (title, text, chkMsg, chkState);
 	return NS_OK;
@@ -55,7 +55,7 @@ in wstring title2, in wstring chkMsg, inout boolean chkState); */
 NS_IMETHODIMP 
 PromptService::ConfirmEx(nsIDOMWindow * parent, const PRUnichar * title, const PRUnichar *text, 
 						 PRUint32 buttonFlags, const PRUnichar *title0, const PRUnichar *title1, 
-						 const PRUnichar * title2, const PRUnichar *chkMsg, PRBool *chkState, 
+						 const PRUnichar * title2, const PRUnichar *chkMsg, bool/* PRBool */ *chkState, 
 						 PRInt32 *retval)
 {
 	*chkState = browserWindow->owner->events->OnConfirmEx (title, text, (DialogButtonFlags)buttonFlags, 
@@ -68,8 +68,8 @@ PromptService::ConfirmEx(nsIDOMWindow * parent, const PRUnichar * title, const P
 NS_IMETHODIMP 
 PromptService::Prompt(nsIDOMWindow * parent, const PRUnichar * title, 
 					  const PRUnichar * text, PRUnichar ** value, 
-					  const PRUnichar * chkMsg, PRBool * chkState, 
-					  PRBool *retval)
+					  const PRUnichar * chkMsg, bool/* PRBool */ * chkState, 
+					  bool/* PRBool */ *retval)
 {
 	*retval = browserWindow->owner->events->OnPrompt (title, text, value);
 	return NS_OK;
@@ -79,7 +79,7 @@ PromptService::Prompt(nsIDOMWindow * parent, const PRUnichar * title,
 NS_IMETHODIMP 
 PromptService::PromptUsernameAndPassword(nsIDOMWindow * parent, const PRUnichar * title, 
 										 const PRUnichar * text, PRUnichar ** username, PRUnichar ** password, 
-										 const PRUnichar * chkMsg, PRBool * chkState, PRBool * retval)
+										 const PRUnichar * chkMsg, bool/* PRBool */ * chkState, bool/* PRBool */ * retval)
 {
 	*retval = browserWindow->owner->events->OnPromptUsernameAndPassword 
 						(title, text, chkMsg, chkState,	username, password);
@@ -90,8 +90,8 @@ PromptService::PromptUsernameAndPassword(nsIDOMWindow * parent, const PRUnichar 
 NS_IMETHODIMP 
 PromptService::PromptPassword(nsIDOMWindow *parent, const PRUnichar *title, 
 							  const PRUnichar *text, PRUnichar **password, 
-							  const PRUnichar *chkMsg, PRBool *chkState,
-							  PRBool *retval)
+							  const PRUnichar *chkMsg, bool/* PRBool */ *chkState,
+							  bool/* PRBool */ *retval)
 {
 	*retval = browserWindow->owner->events->OnPromptPassword (title, text, chkMsg, chkState, password);
 	return NS_OK;
@@ -101,7 +101,7 @@ PromptService::PromptPassword(nsIDOMWindow *parent, const PRUnichar *title,
 NS_IMETHODIMP 
 PromptService::Select(nsIDOMWindow *parent, const PRUnichar *title, const PRUnichar *text, 
 					  PRUint32 count, const PRUnichar **options, 
-					  PRInt32 *selection, PRBool *retval)
+					  PRInt32 *selection, bool/* PRBool */ *retval)
 {
 	*retval = browserWindow->owner->events->OnSelect (title, text, count, options, selection);
 	return NS_OK;
@@ -145,7 +145,7 @@ NS_IMETHODIMP PromptServiceFactory::CreateInstance(nsISupports *aOuter, const ns
   return rv;
 }
 
-NS_IMETHODIMP PromptServiceFactory::LockFactory(PRBool lock)
+NS_IMETHODIMP PromptServiceFactory::LockFactory(bool/* PRBool */ lock)
 {
   return NS_OK;
 }

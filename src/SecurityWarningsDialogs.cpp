@@ -12,6 +12,8 @@
 
 #include "SecurityWarningsDialogs.h"
 
+#define PRBool bool
+
 //static HINSTANCE gInstance;
 
 NS_IMPL_ISUPPORTS1(SecurityWarningDialogs, nsISecurityWarningDialogs)

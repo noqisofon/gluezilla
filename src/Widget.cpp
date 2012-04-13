@@ -50,7 +50,7 @@ Widget::BeginInvoke (Params * params)
 	return BeginInvoke (params, PR_TRUE);
 }
 nsresult
-Widget::BeginInvoke (Params * params, PRBool wait)
+Widget::BeginInvoke (Params * params, bool/* PRBool */ wait)
 {
 #ifdef NS_UNIX
 	if (this->platform == Winforms) {
@@ -459,7 +459,7 @@ Widget::EvalScript (const char * script)
 
 	nsIScriptContext* theScriptContext = theGlobalObject->GetContext();
 
-	PRBool IsUndefined;
+	bool/* PRBool */ IsUndefined;
 	nsString output;
 	nsresult result = theScriptContext->EvaluateString (NS_ConvertUTF8toUTF16(script),
 	   nsnull, nsnull, "", 1, nsnull, &output, &IsUndefined);
@@ -469,7 +469,7 @@ Widget::EvalScript (const char * script)
 
 // EVENTS
 
-PRBool 
+bool/* PRBool */ 
 Widget::EventActivate ()
 {
 	return events->OnActivate ();

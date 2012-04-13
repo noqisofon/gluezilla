@@ -14,8 +14,8 @@
 
 
 #include <gtk/gtk.h>
-#include <gtk/gtkwindow.h>
-#include <gdk/gdkx.h>
+/* #include <gtk/gtkwindow.h> */
+/* #include <gdk/gdkx.h> */
 
 #ifdef DEBUG
 #define PRINT(str)	\

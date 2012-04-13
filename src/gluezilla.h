@@ -64,10 +64,10 @@ extern "C"
 
 	typedef struct _ModifierKeys
 	{
-		PRBool altKey;
-		PRBool ctrlKey;
-		PRBool metaKey;
-		PRBool shiftKey;
+		bool/* PRBool */ altKey;
+		bool/* PRBool */ ctrlKey;
+		bool/* PRBool */ metaKey;
+		bool/* PRBool */ shiftKey;
 	} ModifierKeys;
 
 	typedef struct _MouseInfo
@@ -123,43 +123,43 @@ extern "C"
 		void (STDCALL *OnSecurityChange)	(nsIWebProgress *webProgress, nsIRequest *request, PRUint32 status);
 	    
 		//return true to abort/consume
-		PRBool (STDCALL *OnDomKeyDown)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnDomKeyUp)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnDomKeyPress)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnDomKeyDown)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnDomKeyUp)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnDomKeyPress)		(KeyInfo keyInfo, ModifierKeys modifiers, nsIDOMNode * node);
 			
-		PRBool (STDCALL *OnMouseDown)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnMouseUp)			(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnMouseClick)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnMouseDoubleClick)(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnMouseOver)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
-		PRBool (STDCALL *OnMouseOut)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseDown)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseUp)			(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseClick)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseDoubleClick)(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseOver)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
+		bool/* PRBool */ (STDCALL *OnMouseOut)		(MouseInfo mouseInfo, ModifierKeys modifiers, nsIDOMNode * node);
 
-		PRBool (STDCALL *OnActivate)		(void);
-		PRBool (STDCALL *OnFocus)			(void);
-		PRBool (STDCALL *OnBlur)		(void);
+		bool/* PRBool */ (STDCALL *OnActivate)		(void);
+		bool/* PRBool */ (STDCALL *OnFocus)			(void);
+		bool/* PRBool */ (STDCALL *OnBlur)		(void);
 
 		void (STDCALL *OnAlert)				(const PRUnichar * title, const PRUnichar * text);
-		PRBool (STDCALL *OnAlertCheck)		(const PRUnichar * title, const PRUnichar * text, const PRUnichar * chkMsg, PRBool * chkState);
-		PRBool (STDCALL *OnConfirm)			(const PRUnichar * title, const PRUnichar * text);
-		PRBool (STDCALL *OnConfirmCheck)	(const PRUnichar * title, const PRUnichar * text, const PRUnichar * chkMsg, PRBool * chkState);
+		bool/* PRBool */ (STDCALL *OnAlertCheck)		(const PRUnichar * title, const PRUnichar * text, const PRUnichar * chkMsg, bool/* PRBool */ * chkState);
+		bool/* PRBool */ (STDCALL *OnConfirm)			(const PRUnichar * title, const PRUnichar * text);
+		bool/* PRBool */ (STDCALL *OnConfirmCheck)	(const PRUnichar * title, const PRUnichar * text, const PRUnichar * chkMsg, bool/* PRBool */ * chkState);
 
-		PRBool (STDCALL *OnConfirmEx)		(const PRUnichar * title, const PRUnichar * text, DialogButtonFlags flags, 
+		bool/* PRBool */ (STDCALL *OnConfirmEx)		(const PRUnichar * title, const PRUnichar * text, DialogButtonFlags flags, 
 											 const PRUnichar * title0, const PRUnichar * title1, const PRUnichar * title2, 
-											 const PRUnichar * chkMsg, PRBool * chkState, PRInt32 * retVal);
+											 const PRUnichar * chkMsg, bool/* PRBool */ * chkState, PRInt32 * retVal);
 		
-		PRBool (STDCALL *OnPrompt)			(const PRUnichar * title, const PRUnichar * text, 
+		bool/* PRBool */ (STDCALL *OnPrompt)			(const PRUnichar * title, const PRUnichar * text, 
 											 PRUnichar ** retVal);
 		
-		PRBool (STDCALL *OnPromptUsernameAndPassword)	
+		bool/* PRBool */ (STDCALL *OnPromptUsernameAndPassword)	
 											(const PRUnichar * title, const PRUnichar * text, 
-											 const PRUnichar * chkMsg, PRBool * chkState,
+											 const PRUnichar * chkMsg, bool/* PRBool */ * chkState,
 											 PRUnichar ** username, PRUnichar ** password);
 		
-		PRBool (STDCALL *OnPromptPassword)	(const PRUnichar * title, const PRUnichar * text, 
-											 const PRUnichar * chkMsg, PRBool * chkState, 
+		bool/* PRBool */ (STDCALL *OnPromptPassword)	(const PRUnichar * title, const PRUnichar * text, 
+											 const PRUnichar * chkMsg, bool/* PRBool */ * chkState, 
 											 PRUnichar ** password);
 
-		PRBool (STDCALL *OnSelect)			(const PRUnichar * title, const PRUnichar * text, 
+		bool/* PRBool */ (STDCALL *OnSelect)			(const PRUnichar * title, const PRUnichar * text, 
 											 PRUint32 count, const PRUnichar ** list, 
 											 PRInt32 * retVal);
 
@@ -194,8 +194,8 @@ extern "C"
 
 	// Navigation
 	NS_EXPORT_(int) gluezilla_navigate (Handle *instance, const char * uri);
-	NS_EXPORT_(PRBool) gluezilla_forward (Handle *instance);
-	NS_EXPORT_(PRBool) gluezilla_back (Handle *instance);
+	NS_EXPORT_(bool/* PRBool */) gluezilla_forward (Handle *instance);
+	NS_EXPORT_(bool/* PRBool */) gluezilla_back (Handle *instance);
 	NS_EXPORT_(int) gluezilla_home (Handle *instance);
 	NS_EXPORT_(int) gluezilla_stop (Handle *instance);
 	NS_EXPORT_(int) gluezilla_reload (Handle *instance, ReloadOption option);
@@ -217,12 +217,12 @@ extern "C"
 	
 	NS_EXPORT_(nsresult) 	gluezilla_StringContainerInit (nsStringContainer &aStr);
 	NS_EXPORT_(void) 		gluezilla_StringContainerFinish (nsStringContainer &aStr);
-	NS_EXPORT_(PRUint32) 	gluezilla_StringGetData (const nsAString &aStr, const PRUnichar **aBuf, PRBool *aTerm);
+	NS_EXPORT_(PRUint32) 	gluezilla_StringGetData (const nsAString &aStr, const PRUnichar **aBuf, bool/* PRBool */ *aTerm);
 	NS_EXPORT_(nsresult) 	gluezilla_StringSetData (nsAString &aStr, const PRUnichar *aBuf, PRUint32 aCount);
 	
 	NS_EXPORT_(nsresult) 	gluezilla_CStringContainerInit (nsCStringContainer &aStr);
 	NS_EXPORT_(void) 		gluezilla_CStringContainerFinish (nsCStringContainer &aStr);
-	NS_EXPORT_(PRUint32) 	gluezilla_CStringGetData (const nsACString &aStr, const char **aBuf, PRBool *aTerm);
+	NS_EXPORT_(PRUint32) 	gluezilla_CStringGetData (const nsACString &aStr, const char **aBuf, bool/* PRBool */ *aTerm);
 	NS_EXPORT_(nsresult) 	gluezilla_CStringSetData (nsACString &aStr, const char *aBuf, PRUint32 aCount);
 
 	NS_EXPORT_(nsIServiceManager*) gluezilla_getServiceManager();

@@ -1,6 +1,7 @@
 #ifndef _INTERFACES_H_
 #define _INTERFACES_H_
 
+typedef unsigned short char16_t;
 #define TO_STRING(x) #x
 
 //Gecko Embedding API
@@ -165,8 +166,8 @@ XRE_API(PRBool,
 
 #ifdef NS_UNIX
 #include <gtk/gtk.h>
-#include <gtk/gtkwindow.h>
-#include <gdk/gdkx.h>
+/* #include <gtk/gtkwindow.h> */
+/* #include <gdk/gdkx.h> */
 
 	#ifdef DEBUG
 		#define PRINT(str)	\

@@ -75,7 +75,7 @@ class Widget
 		}
 
 		nsresult BeginInvoke (Params * params);
-		nsresult BeginInvoke (Params * params, PRBool wait);
+		nsresult BeginInvoke (Params * params, bool/* PRBool */ wait);
 
 		nsresult EndInvoke (Params * params) {
 			return delegates[params->name](params);
@@ -210,7 +210,7 @@ class Widget
 
 
 		// Events
-		PRBool EventActivate		(void);
+		bool/* PRBool */ EventActivate		(void);
 		void EventGeneric			(nsString type);
 
 
@@ -220,9 +220,9 @@ class Widget
 		const char * startDir;
 		const char * dataDir;
 
-		PRBool		isDestroyed;
-		PRBool		isChrome;
-		PRBool		chromeLoaded;
+		bool/* PRBool */		isDestroyed;
+		bool/* PRBool */		isChrome;
+		bool/* PRBool */		chromeLoaded;
 		PRUint32	chromeMask;
 
 		CallbackBin	*events;

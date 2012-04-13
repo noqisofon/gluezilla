@@ -43,9 +43,9 @@ LocationProvider::~LocationProvider()
   /* destructor code */
 }
 
-/* nsIFile getFile (in string prop, out PRBool persistent); */
+/* nsIFile getFile (in string prop, out bool\/* PRBool *\/ persistent); */
 NS_IMETHODIMP 
-LocationProvider::GetFile(const char *prop, PRBool *persistent, nsIFile **_retval)
+LocationProvider::GetFile(const char *prop, bool/* PRBool */ *persistent, nsIFile **_retval)
 {
     nsCOMPtr<nsILocalFile>  localFile;
     nsresult rv = NS_ERROR_FAILURE;
@@ -139,7 +139,7 @@ LocationProvider::GetFile(const char *prop, PRBool *persistent, nsIFile **_retva
 		rv = NS_NewNativeLocalFile(file, PR_TRUE, getter_AddRefs(localFile));
 		if (NS_SUCCEEDED(rv))
 		{
-			PRBool exists;
+			bool/* PRBool */ exists;
 			rv = localFile->AppendNative(COMPONENT_DIRECTORY);
 			if (NS_FAILED(rv)) return rv;
 			rv = localFile->Exists (&exists);
@@ -156,7 +156,7 @@ LocationProvider::GetFile(const char *prop, PRBool *persistent, nsIFile **_retva
 		rv = NS_NewNativeLocalFile(file, PR_TRUE, getter_AddRefs(localFile));
 		if (NS_SUCCEEDED(rv))
 		{
-			PRBool exists;
+			bool/* PRBool */ exists;
 			rv = localFile->AppendNative(COMPONENT_DIRECTORY);
 			if (NS_FAILED(rv)) return rv;
 			rv = localFile->Exists (&exists);
@@ -191,18 +191,18 @@ char const * GetAvailableRuntime ()
 	}
 #endif
 
-	static const GREVersionRange version = {
-#if XUL_VERSION == 2
-	"1.8", PR_TRUE,
-#else
-	"1.9", PR_TRUE,
-#endif
-	"9.9", PR_TRUE
-	};
+// 	static const GREVersionRange version = {
+// #if XUL_VERSION == 2
+// 	"1.8", PR_TRUE,
+// #else
+// 	"1.9", PR_TRUE,
+// #endif
+// 	"9.9", PR_TRUE
+// 	};
 
-	GRE_GetGREPathWithProperties(&version, 1,
-							   nsnull, 0,
-							   runtimePath, MAX_PATH);
+// 	GRE_GetGREPathWithProperties(&version, 1,
+//                                  nsnull, 0,
+//                                  runtimePath, MAX_PATH);
 	if (*runtimePath)
 		return runtimePath;
 

@@ -210,7 +210,7 @@ BrowserWindow::Forward ()
 	PRINT("BrowserWindow::Forward\n");
 
 	if (webNav)	{
-		PRBool canGoForward = PR_FALSE;
+		bool/* PRBool */ canGoForward = PR_FALSE;
 		webNav->GetCanGoForward(&canGoForward);
 		if (canGoForward)
 			webNav->GoForward ();
@@ -225,7 +225,7 @@ BrowserWindow::Back ()
 	PRINT("BrowserWindow::Back\n");
 
 	if (webNav) {
-		PRBool canGoBack = PR_FALSE;
+		bool/* PRBool */ canGoBack = PR_FALSE;
 		webNav->GetCanGoBack(&canGoBack);
 		if (canGoBack)
 			webNav->GoBack ();
@@ -449,7 +449,7 @@ BrowserWindow::OnStateChange(nsIWebProgress* progress, nsIRequest* request,
 	bool windowstop = ( state & STATE_STOP ) && ( state & STATE_IS_WINDOW ) && ( status == NS_OK );
 	
 	if (netstop) {
-		PRBool visibility;
+		bool/* PRBool */ visibility;
 		this->GetVisibility(&visibility);
 		if (visibility)
 			this->SetVisibility(PR_TRUE);
@@ -536,7 +536,7 @@ NS_IMETHODIMP BrowserWindow::ShowAsModal()
 
 /* boolean isWindowModal (); */
 NS_IMETHODIMP 
-BrowserWindow::IsWindowModal(PRBool *_retval)
+BrowserWindow::IsWindowModal(bool/* PRBool */ *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -557,8 +557,13 @@ BrowserWindow::OnProgressChange(nsIWebProgress *webProgress, nsIRequest *request
 }
 
 /* void onLocationChange (in nsIWebProgress aWebProgress, in nsIRequest aRequest, in nsIURI aLocation); */
+#if 1
+NS_IMETHODIMP 
+BrowserWindow::OnLocationChange(nsIWebProgress *webProgress, nsIRequest *request, nsIURI *location, PRUint32 foo)
+#else
 NS_IMETHODIMP 
 BrowserWindow::OnLocationChange(nsIWebProgress *webProgress, nsIRequest *request, nsIURI *location)
+#endif
 {
     owner->events->OnLocationChanged(webProgress, request, location);
 	return NS_OK;
@@ -586,28 +591,28 @@ BrowserWindow::OnSecurityChange (nsIWebProgress *webProgress, nsIRequest *reques
 
 /* boolean onStartURIOpen (in nsIURI aURI); */
 //NS_IMETHODIMP 
-//BrowserWindow::OnStartURIOpen(nsIURI *aURI, PRBool *_retval)
+//BrowserWindow::OnStartURIOpen(nsIURI *aURI, bool/* PRBool */ *_retval)
 //{
 //    return NS_ERROR_NOT_IMPLEMENTED;
 //}
 
 /* boolean doContent (in string aContentType, in boolean aIsContentPreferred, in nsIRequest aRequest, out nsIStreamListener aContentHandler); */
 //NS_IMETHODIMP 
-//BrowserWindow::DoContent(const char *aContentType, PRBool aIsContentPreferred, nsIRequest *aRequest, nsIStreamListener **aContentHandler, PRBool *_retval)
+//BrowserWindow::DoContent(const char *aContentType, bool/* PRBool */ aIsContentPreferred, nsIRequest *aRequest, nsIStreamListener **aContentHandler, bool/* PRBool */ *_retval)
 //{
 //    return NS_ERROR_NOT_IMPLEMENTED;
 //}
 
 /* boolean isPreferred (in string aContentType, out string aDesiredContentType); */
 //NS_IMETHODIMP 
-//BrowserWindow::IsPreferred(const char *aContentType, char **aDesiredContentType, PRBool *_retval)
+//BrowserWindow::IsPreferred(const char *aContentType, char **aDesiredContentType, bool/* PRBool */ *_retval)
 //{
 //    return NS_ERROR_NOT_IMPLEMENTED;
 //}
 
 /* boolean canHandleContent (in string aContentType, in boolean aIsContentPreferred, out string aDesiredContentType); */
 //NS_IMETHODIMP 
-//BrowserWindow::CanHandleContent(const char *aContentType, PRBool aIsContentPreferred, char **aDesiredContentType, PRBool *_retval)
+//BrowserWindow::CanHandleContent(const char *aContentType, bool/* PRBool */ aIsContentPreferred, char **aDesiredContentType, bool/* PRBool */ *_retval)
 //{
 //    return NS_ERROR_NOT_IMPLEMENTED;
 //}
@@ -643,8 +648,8 @@ BrowserWindow::OnSecurityChange (nsIWebProgress *webProgress, nsIRequest *reques
 /* void setDimensions (in unsigned long flags, in long x, in long y, in long cx, in long cy); */
 NS_IMETHODIMP 
 BrowserWindow::SetDimensions(PRUint32 flags, 
-										   PRInt32 x, PRInt32 y, 
-										   PRInt32 cx, PRInt32 cy)
+                             PRInt32 x, PRInt32 y, 
+                             PRInt32 cx, PRInt32 cy)
 {
 	if (flags & nsIEmbeddingSiteWindow::DIM_FLAGS_POSITION &&
 			(flags & (nsIEmbeddingSiteWindow::DIM_FLAGS_SIZE_INNER |
@@ -684,13 +689,13 @@ BrowserWindow::Blur()
 
 /* attribute boolean visibility; */
 NS_IMETHODIMP 
-BrowserWindow::GetVisibility(PRBool *aVisibility)
+BrowserWindow::GetVisibility(bool/* PRBool */ *aVisibility)
 {
 //	baseWindow->GetVisibility (aVisibility);
 	return NS_OK;
 }
 NS_IMETHODIMP 
-BrowserWindow::SetVisibility(PRBool aVisibility)
+BrowserWindow::SetVisibility(bool/* PRBool */ aVisibility)
 {
 //	baseWindow->SetVisibility (aVisibility);
 	return NS_OK;

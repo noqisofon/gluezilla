@@ -2,6 +2,11 @@
 
 NS_IMPL_ISUPPORTS1(EventListener, nsIDOMEventListener)
 
+#undef NS_LITERAL_STRING
+
+#define NS_LITERAL_STRING(_str_)  (PRUnichar *)_str_
+
+
 NS_IMETHODIMP
 EventListener::HandleEvent (nsIDOMEvent *domEvent)
 {

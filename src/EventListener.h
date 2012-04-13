@@ -1,9 +1,9 @@
 #ifndef __EventListener_h
 #define __EventListener_h
 
-#include <interfaces.h>
+#include "interfaces.h"
 #include "gluezilla.h"
-#include <BrowserWindow.h>
+#include "BrowserWindow.h"
 
 class BrowserWindow;
 

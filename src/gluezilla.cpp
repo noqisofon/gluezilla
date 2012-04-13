@@ -221,7 +221,7 @@ gluezilla_navigate (Handle *instance, const char * uri)
 	return result;
 }
 
-NS_METHOD_(PRBool)
+NS_METHOD_(bool/* PRBool */)
 gluezilla_forward (Handle *instance)
 {
 	Widget *widget = reinterpret_cast<Widget *> (instance);
@@ -239,7 +239,7 @@ gluezilla_forward (Handle *instance)
 	return result;
 }
 
-NS_METHOD_(PRBool)
+NS_METHOD_(bool/* PRBool */)
 gluezilla_back (Handle *instance)
 {
 	Widget *widget = reinterpret_cast<Widget *> (instance);
@@ -479,7 +479,7 @@ gluezilla_StringContainerFinish (nsStringContainer &aStr)
 }
 
 NS_METHOD_(PRUint32)
-gluezilla_StringGetData (const nsAString &aStr, const PRUnichar **aBuf, PRBool *aTerm)
+gluezilla_StringGetData (const nsAString &aStr, const PRUnichar **aBuf, bool/* PRBool */ *aTerm)
 {
 	return NS_StringGetData (aStr, aBuf, aTerm);
 }
@@ -503,7 +503,7 @@ gluezilla_CStringContainerFinish (nsCStringContainer &aStr)
 }
 
 NS_METHOD_(PRUint32)
-gluezilla_CStringGetData (const nsACString &aStr, const char **aBuf, PRBool *aTerm)
+gluezilla_CStringGetData (const nsACString &aStr, const char **aBuf, bool/* PRBool */ *aTerm)
 {
 	return NS_CStringGetData (aStr, aBuf, aTerm);
 }
